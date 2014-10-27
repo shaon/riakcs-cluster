@@ -2,8 +2,6 @@ stack_order do
   bootstrap 'riakcs-cluster::head'
   bootstrap 'riakcs-cluster::node'
   bootstrap 'riakcs-cluster::nuke'
-  bootstrap 'riakcs-cluster::temphead'
-  bootstrap 'riakcs-cluster::tempnode'
 end
 
 component 'riakcs-cluster' do
