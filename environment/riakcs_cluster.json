@@ -1,0 +1,72 @@
+{
+  "name": "riakcs_cluster",
+  "description": "",
+  "cookbook_versions": {
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "riak": {
+      "cs_version": "1.5.1",
+      "args": {
+        "+zdbbl": 96000,
+        "-env": {
+          "ERL_MAX_PORTS": 16384
+        }
+      },
+      "config": {
+        "riak_api": {
+          "pb_backlog": 128
+        },
+        "riak_core": {
+          "default_bucket_props": [["__tuple", "allow_mult", true]],
+          "userlist": [["__tuple", "admin", "password"]]
+        },
+        "riak_control": {
+          "enabled": true,
+          "auth": "none"
+        },
+        "riak_kv": {
+          "storage_backend": "riak_cs_kv_multi_backend"
+        }
+      }
+    },
+    "sysctl": {
+      "params": {
+        "net.core.wmem_default": "8388608",
+        "net.core.rmem_default": "8388608",
+        "net.core.wmem_max": "8388608",
+        "net.core.rmem_max": "8388608",
+        "net.core.netdev_max_backlog": "10000"
+      }
+    },
+    "riak_cs": {
+      "args": {
+        "+S": 1
+      },
+      "config": {
+        "riak_cs": {
+          "anonymous_user_creation": true,
+          "fold_objects_for_list_keys": true,
+          "admin_key": "__string_admin-key",
+          "admin_secret": "__string_admin-secret"
+        }
+      }
+    },
+    "riak_cluster_join": {
+      "head": {
+        "ipaddress": "10.111.5.72",
+        "fqdn": "riakcs.example.com"
+      },
+      "stanchion_ip": "10.111.5.72",
+      "stanchion_port": 8085,
+      "nodes": ["10.111.5.73", "10.111.5.75"]
+    },
+    "selfsigned_certificate": {
+      "slpassphrase": "admin",
+      "email": "admin@admin.com"
+    }
+  },
+  "override_attributes": {
+  }
+}

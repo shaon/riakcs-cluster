@@ -1,0 +1,8 @@
+{
+  "nodes": [
+    {
+      "groups": ["riakcs-cluster::node"],
+      "hosts": ["10.111.5.73"]
+    }
+  ]
+}
