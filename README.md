@@ -6,7 +6,14 @@ This cookbook makes your favorite breakfast sandwich.
 
 Usage
 -----
-
+```
+a) upload the cookbook and it's dependencies
+  berks install
+  berks upload
+b) edit environment file to suit your setup environment/riakcs_cluster.json
+c) run motherbrain to deploy riakcs cluster
+  mb riakcs-cluster bootstrap bootstrap.json --environment riakcs_cluster -v
+```
 
 Contributing
 ------------
