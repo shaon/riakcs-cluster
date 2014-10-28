@@ -5,3 +5,7 @@ license          'All rights reserved'
 description      'Installs/Configures riakcs-mb-plugin'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
+depends          'riak', '>= 2.4.18'
+depends          'riak-cs', '>= 2.2.9'
+depends          'riak-cs-create-admin-user', '>= 0.4.0'
+depends          'riak-cs-ssl', '>= 0.2.1'
