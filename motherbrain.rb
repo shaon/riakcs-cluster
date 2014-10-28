@@ -2,6 +2,7 @@ stack_order do
   bootstrap 'riakcs-cluster::head'
   bootstrap 'riakcs-cluster::node'
   bootstrap 'riakcs-cluster::nuke'
+  bootstrap 'riakcs-cluster::commit'
 end
 
 component 'riakcs-cluster' do
@@ -16,6 +17,10 @@ component 'riakcs-cluster' do
     recipe 'riak-cs-create-admin-user'
     recipe 'riakcs-cluster::credentials'
     recipe 'riakcs-cluster::sync'
+  end
+
+  group 'commit' do
+    recipe 'riakcs-cluster::plancommit'
   end
 
   group 'node' do

@@ -1,7 +1,7 @@
 {
   "nodes": [
     {
-      "groups": ["riakcs-cluster::head"],
+      "groups": ["riakcs-cluster::head", "riakcs-cluster::commit"],
       "hosts": ["10.111.5.72"]
     },
     {
