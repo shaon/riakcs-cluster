@@ -1,8 +1,8 @@
 stack_order do
   bootstrap 'riakcs-cluster::head'
   bootstrap 'riakcs-cluster::node'
-  bootstrap 'riakcs-cluster::nuke'
   bootstrap 'riakcs-cluster::commit'
+  bootstrap 'riakcs-cluster::nuke'
 end
 
 component 'riakcs-cluster' do
