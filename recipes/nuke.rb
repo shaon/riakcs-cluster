@@ -43,10 +43,22 @@ end
 
 execute "remove all stanchion artifacts" do
   command "for x in `find / -name 'stanchion'`; do rm -rf $x*; done"
+  ignore_failure true
 end
 
 execute "remove all riak/cs artifacts" do
   command "for x in `find / -name 'riak*'`; do rm -rf $x*; done"
+  ignore_failure true
+end
+
+execute "remove all basho repositories" do
+  command "rm -rf /etc/yum.repos.d/basho*"
+  ignore_failure true
+end
+
+execute "remove saved credentials" do
+  command "rm -rf /root/creds.txt"
+  ignore_failure true
 end
 
 execute "yum-clean" do

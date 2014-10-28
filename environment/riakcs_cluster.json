@@ -60,7 +60,7 @@
       },
       "stanchion_ip": "10.111.5.72",
       "stanchion_port": 8085,
-      "nodes": ["10.111.5.73", "10.111.5.75"]
+      "nodes": ["10.111.5.73", "10.111.5.75", "10.111.5.76", "10.111.5.79"]
     },
     "selfsigned_certificate": {
       "slpassphrase": "admin",
