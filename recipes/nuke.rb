@@ -4,6 +4,12 @@ service "riak-cs" do
   only_if do ::File.exists?('/etc/init.d/riak-cs') end
 end
 
+service "riak-cs-control" do
+  action :stop
+  ignore_failure true
+  only_if do ::File.exists?('/etc/init.d/riak-cs-control') end
+end
+
 service "stanchion" do
   action :stop
   ignore_failure true
@@ -35,10 +41,17 @@ end
 
 yum_package "riak-cs" do
   action :remove
+  ignore_failure true
+end
+
+yum_package "riak-cs-control" do
+  action :remove
+  ignore_failure true
 end
 
 yum_package "stanchion" do
   action :remove
+  ignore_failure true
 end
 
 execute "remove all stanchion artifacts" do
