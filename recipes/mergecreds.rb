@@ -28,8 +28,8 @@ ruby_block "merge-creds" do
       "riak_cs" => riak_cs_config["riak_cs"].merge(
         "admin_key" => admin_key.to_erl_string,
         "admin_secret" => admin_secret.to_erl_string,
-        "stanchion_ip" => node['riak_cluster_join']['stanchion_ip'].to_erl_string,
-        "stanchion_port" => node['riak_cluster_join']['stanchion_port']
+        "stanchion_ip" => node['riakcs_cluster']['topology']['stanchion_ip'].to_erl_string,
+        "stanchion_port" => node['riakcs_cluster']['topology']['stanchion_port']
       )
     )
     riak_cs_file = resources(:file => "#{node['riak_cs']['package']['config_dir']}/app.config")
