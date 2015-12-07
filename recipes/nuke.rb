@@ -25,13 +25,11 @@ end
 execute "kill beam.smp" do
   command "killall beam.smp"
   ignore_failure true
-  only_if "ps aux | grep beam"
 end
 
 execute "kill epmd" do
   command "killall epmd"
   ignore_failure true
-  only_if "ps aux | grep epmd"
 end
 
 yum_package "riak" do
@@ -54,14 +52,92 @@ yum_package "stanchion" do
   ignore_failure true
 end
 
-execute "remove all stanchion artifacts" do
-  command "for x in `find / -name 'stanchion'`; do rm -rf $x*; done"
-  ignore_failure true
+directory '/etc/riak' do
+  recursive true
+  action :delete
 end
 
-execute "remove all riak/cs artifacts" do
-  command "for x in `find / -name 'riak*'`; do rm -rf $x*; done"
-  ignore_failure true
+directory '/etc/riak-cs' do
+  recursive true
+  action :delete
+end
+
+directory '/etc/riak-cs-control' do
+  recursive true
+  action :delete
+end
+
+directory '/etc/stanchion' do
+  recursive true
+  action :delete
+end
+
+directory '/var/lib/riak' do
+  recursive true
+  action :delete
+end
+
+directory '/var/lib/riak-cs' do
+  recursive true
+  action :delete
+end
+
+directory '/var/lib/riak-cs-control' do
+  recursive true
+  action :delete
+end
+
+directory '/var/lib/stanchion' do
+  recursive true
+  action :delete
+end
+
+directory '/var/log/riak' do
+  recursive true
+  action :delete
+end
+
+directory '/var/log/riak-cs' do
+  recursive true
+  action :delete
+end
+
+directory '/var/log/riak-cs-control' do
+  recursive true
+  action :delete
+end
+
+directory '/var/log/stanchion' do
+  recursive true
+  action :delete
+end
+
+file '/var/lock/subsys/riak' do
+  action :delete
+end
+
+file '/var/lock/subsys/riak-cs' do
+  action :delete
+end
+
+file '/var/lock/subsys/riak-cs-control' do
+  action :delete
+end
+
+file '/var/lock/subsys/stanchion' do
+  action :delete
+end
+
+file '/etc/security/limits.d/riak_limits.conf' do
+  action :delete
+end
+
+file '/etc/security/limits.d/riakcs_limits.conf' do
+  action :delete
+end
+
+file '/etc/security/limits.d/stanchion_limits.conf' do
+  action :delete
 end
 
 execute "remove all basho repositories" do
